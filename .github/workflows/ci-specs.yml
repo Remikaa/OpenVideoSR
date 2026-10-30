@@ -1,0 +1,29 @@
+name: ci-specs
+
+# Checks spec traceability and phase gates. Passes when no specs exist,
+# so the spec-driven workflow stays optional.
+on:
+  pull_request:
+    paths:
+      - "specs/**"
+      - "tests/**"
+      - "extension/tests/**"
+      - "tools/specs/**"
+  push:
+    branches: [main]
+    paths:
+      - "specs/**"
+      - "tests/**"
+      - "extension/tests/**"
+      - "tools/specs/**"
+
+jobs:
+  traceability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check specs
+        run: python tools/specs/specs.py check

@@ -1,0 +1,16 @@
+# OpenVideoSR — ovsr_add_test helper and CTest labels (Structure.md §2, §4.2)
+# Labels: unit, integration, model (tiny ONNX model, CPU), gpu (needs a real
+# GPU; never run in CI: ctest -LE gpu).
+function(ovsr_add_test target)
+    cmake_parse_arguments(T "" "" "SOURCES;DEPS;LABELS" ${ARGN})
+    add_executable(${target} ${T_SOURCES})
+    target_include_directories(${target} PRIVATE ${PROJECT_SOURCE_DIR}/tests/support)
+    target_link_libraries(${target} PRIVATE ${T_DEPS} ovsr::testsupport)
+    target_compile_features(${target} PRIVATE cxx_std_23)
+    ovsr_set_warnings(${target})
+    add_test(NAME ${target} COMMAND ${target})
+    if(NOT T_LABELS)
+        set(T_LABELS unit)
+    endif()
+    set_tests_properties(${target} PROPERTIES LABELS "${T_LABELS}")
+endfunction()

@@ -1,0 +1,6 @@
+{
+  "name": "openvideosr",
+  "version-string": "0.1.0",
+  "description": "OpenVideoSR C++ dependency manifest. TODO(workstream A): add ports in phase 0 — WebSocket library (owner pick), FFmpeg (LGPL features only: no GPL components such as x264/x265), a logging library, a JSON library (src/ of infra and modelhub only), test and benchmark frameworks. See Structure.md section 4.1.",
+  "dependencies": []
+}

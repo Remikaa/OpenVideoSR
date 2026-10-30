@@ -1,0 +1,4 @@
+{
+  "_TODO": "Default model per content profile (anime, live, screen, quality); read by libs/modelhub/ProfileDefaults. Fill in phase 2.",
+  "profiles": { "anime": null, "live": null, "screen": null, "quality": null }
+}

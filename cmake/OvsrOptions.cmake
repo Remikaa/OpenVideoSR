@@ -1,0 +1,7 @@
+# OpenVideoSR — build options (Structure.md §4.2, §6)
+option(OVSR_ENABLE_ORT "Build the in-process ONNX Runtime backend" ON)
+option(OVSR_ENABLE_WORKERS "Build worker executables and the process backend" OFF)
+option(OVSR_BUILD_UI "Build the Qt UI and GUI app" ON)
+option(OVSR_BUILD_TESTS "Build tests and fakes and register them with CTest" ON)
+option(OVSR_BUILD_BENCHMARKS "Build benchmarks" OFF)
+set(OVSR_ORT_ROOT "" CACHE PATH "Path to a prebuilt ONNX Runtime package (GPU providers); empty means vcpkg")

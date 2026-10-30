@@ -1,0 +1,30 @@
+name: ci-cpp
+
+# Configure, build and run unit, integration and model tests on Windows and
+# Linux for every push. GPU tests are excluded (label gpu; CI has no GPU).
+# TODO(workstream A): provision vcpkg repos + cache before the first green run.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  cpp:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            preset: ci-windows
+          - os: ubuntu-latest
+            preset: ci-linux
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      # TODO: set up vcpkg (and the MSVC/Ninja toolchain on Windows)
+      - name: Configure
+        run: cmake --preset ${{ matrix.preset }}
+      - name: Build
+        run: cmake --build --preset ${{ matrix.preset }}
+      - name: Test (unit + integration + model; gpu excluded)
+        run: ctest --preset ${{ matrix.preset }} -LE gpu

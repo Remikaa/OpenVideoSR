@@ -1,0 +1,11 @@
+{
+  "name": "openvideosr-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension for OpenVideoSR. _TODO(pins): eslint version and any test runner dependency; AGENTS.md expects `npm ci && npm run lint && npm test`.",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node --test tests/"
+  }
+}

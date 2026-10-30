@@ -1,0 +1,4 @@
+{
+  "//": "Copy to config/local.json (git-ignored). Per-machine overrides and the auth token. NEVER commit local.json.",
+  "server": { "authToken": "TODO: generated at first start by libs/transport/AuthToken" }
+}

@@ -1,0 +1,4 @@
+# Weights and compiled engines are downloaded, never committed (Structure.md 4.21).
+*.onnx
+*.engine
+*.pth

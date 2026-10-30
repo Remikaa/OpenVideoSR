@@ -1,0 +1,21 @@
+# One owner per workstream folder (Structure.md 4.1; ProjectUnderstanding.md 12.1).
+# TODO(workstream leads): fill in real GitHub handles, then un-comment.
+# /libs/base/                @owner-a
+# /libs/media/               @owner-a
+# /libs/infra/               @owner-a
+# /libs/modelhub/            @owner-b
+# /libs/imaging/             @owner-b
+# /libs/inference/           @owner-b
+# /libs/planning/            @owner-b
+# /libs/pipeline/            @owner-d
+# /libs/session/             @owner-d
+# /libs/cache/               @owner-c
+# /libs/mediaio/             @owner-c
+# /libs/transport/           @owner-e
+# /extension/                @owner-e
+# /ui/                       @owner-f
+# /apps/                     @owner-f (CompositionRoot has a single owner)
+# These change how everyone (and every agent) works - review by ALL leads:
+# AGENTS.md
+# .claude/
+# specs/principles.md

@@ -1,0 +1,28 @@
+name: ci-extension
+
+# Install, lint and test the Chrome extension (Structure.md 4.1).
+on:
+  push:
+    branches: [main]
+    paths: ["extension/**"]
+  pull_request:
+    paths: ["extension/**"]
+
+jobs:
+  test:
+    if: false   # TODO(workstream E): enable in phase 1 when extension/ builds and tests run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install
+        working-directory: extension
+        run: npm ci
+      - name: Lint
+        working-directory: extension
+        run: npm run lint
+      - name: Test
+        working-directory: extension
+        run: npm test

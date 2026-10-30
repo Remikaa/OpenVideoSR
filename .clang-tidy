@@ -1,0 +1,12 @@
+# OpenVideoSR - static analysis, enforced in CI (Structure.md 2).
+# TODO(workstream A): finalize the check set in phase 0.
+Checks: >
+  bugprone-*,
+  cppcoreguidelines-*,
+  misc-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -modernize-use-trailing-return-type
+WarningsAsErrors: ''
+HeaderFilterRegex: 'include/openvideosr/.*'

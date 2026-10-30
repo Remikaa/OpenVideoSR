@@ -1,0 +1,8 @@
+# OpenVideoSR - formatting rules, enforced in CI (Structure.md 2).
+# TODO(workstream A): agree the exact style with the team in phase 0; LLVM
+# defaults are a provisional, reversible starting point.
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 100
+DerivePointerAlignment: false
+PointerAlignment: Left

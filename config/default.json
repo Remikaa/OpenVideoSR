@@ -1,0 +1,21 @@
+{
+  "//": "Committed defaults (Structure.md 4.3). Values marked TODO need a team decision - do not invent them.",
+  "server": { "bind": "127.0.0.1", "port": "TODO: fixed loopback port (single-session rule)", "singleSession": true },
+  "pipeline": { "queueSizes": "TODO: per-queue capacities (RunConfig)" },
+  "segments": { "gridLengthSeconds": "TODO: 4 s working assumption - confirm", "container": "fragmented-mp4" },
+  "encoding": {
+    "videoEncoderOrder": ["h264-nvenc", "h264-amf", "h264-software"],
+    "videoBitrate": "TODO: high enough not to erase model detail",
+    "audioCodec": "TODO: AAC vs Opus - verify LGPL build support (docs/encoding-and-containers.md)"
+  },
+  "buffering": { "startBufferSeconds": "TODO" },
+  "cache": { "folder": "os-temp", "budgetBytes": 5368709120 },
+  "engineCache": { "folder": "user-cache" },
+  "providers": {
+    "windows": { "nvidia": ["tensorrt?", "cuda"], "amd": ["migraphx?", "directml"],
+                 "//": "verify provider names and order - they change (ProjectUnderstanding 6.1)" },
+    "linux": { "nvidia": ["cuda", "tensorrt"], "amd": ["migraphx?", "amdgpu?"] },
+    "any": ["cpu"]
+  },
+  "logging": { "level": "TODO" }
+}

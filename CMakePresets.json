@@ -1,0 +1,66 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 25, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "OVSR_ENABLE_ORT": "ON"
+      }
+    },
+    {
+      "name": "windows-ninja-debug",
+      "displayName": "Windows - Ninja - Debug",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "windows-ninja-release",
+      "displayName": "Windows - Ninja - Release",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "linux-ninja-debug",
+      "displayName": "Linux - Ninja - Debug",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "linux-ninja-release",
+      "displayName": "Linux - Ninja - Release",
+      "inherits": "base",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "ci-windows",
+      "displayName": "CI Windows (no GPU providers)",
+      "inherits": "windows-ninja-debug",
+      "cacheVariables": { "OVSR_ENABLE_ORT": "OFF" }
+    },
+    {
+      "name": "ci-linux",
+      "displayName": "CI Linux (no GPU providers)",
+      "inherits": "linux-ninja-debug",
+      "cacheVariables": { "OVSR_ENABLE_ORT": "OFF" }
+    }
+  ],
+  "buildPresets": [
+    { "name": "windows-ninja-debug", "configurePreset": "windows-ninja-debug" },
+    { "name": "windows-ninja-release", "configurePreset": "windows-ninja-release" },
+    { "name": "linux-ninja-debug", "configurePreset": "linux-ninja-debug" },
+    { "name": "linux-ninja-release", "configurePreset": "linux-ninja-release" },
+    { "name": "ci-windows", "configurePreset": "ci-windows" },
+    { "name": "ci-linux", "configurePreset": "ci-linux" }
+  ],
+  "testPresets": [
+    { "name": "windows-ninja-debug", "configurePreset": "windows-ninja-debug", "output": { "outputOnFailure": true } },
+    { "name": "linux-ninja-debug", "configurePreset": "linux-ninja-debug", "output": { "outputOnFailure": true } },
+    { "name": "ci-windows", "configurePreset": "ci-windows", "output": { "outputOnFailure": true } },
+    { "name": "ci-linux", "configurePreset": "ci-linux", "output": { "outputOnFailure": true } }
+  ]
+}

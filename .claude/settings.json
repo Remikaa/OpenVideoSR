@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmake --preset:*)",
+      "Bash(cmake --build:*)",
+      "Bash(ctest:*)",
+      "Bash(python tools/specs/specs.py:*)",
+      "Bash(npm run lint)",
+      "Bash(npm test)"
+    ],
+    "deny": [
+      "Read(./config/local.json)",
+      "Edit(./config/local.json)",
+      "Edit(./specs/principles.md)"
+    ]
+  }
+}
